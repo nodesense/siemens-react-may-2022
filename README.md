@@ -1,3 +1,12 @@
+# clone
+
+```
+git clone https://github.com/nodesense/siemens-react-may-2022
+cd siemens-react-may-2022
+npm install 
+npm start
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
