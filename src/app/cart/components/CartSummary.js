@@ -40,6 +40,20 @@ function recalculate(props) {
 
      
 
+    // called whenever parent render called on update cycle
+    // called whenver this.setState called on update cycle
+    // NOT CALLED when we do this.forceUpdate which trigger render not calling shouldComponentUpdate
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("CartSummary shouldComponentUpdate")
+        console.log("current props ", this.props)
+        console.log("current state ", this.state)
+        console.log("nextProps ", nextProps)
+        console.log("nextState  ", nextState)
+        
+        return this.props.amount != nextProps.amount || 
+               this.props.count != nextProps.count 
+        
+    }
 
     
     render() {

@@ -1,13 +1,20 @@
 // CartList.js
 
-import React, {Component} from "react";
+import React, {Component, PureComponent} from "react";
 import PropTypes from "prop-types";
 
 import CartItem from "./CartItem";
 
- //TODO: PureComponent
-
- class CartList extends Component {
+ // : PureComponent is derived from Component
+ // PureComponent has one function called shouldComponentUpdate implemented
+ // shouldComponentUpdate decides whether render() function to be called or not on update cycle
+ // if shouldComponentUpdate returns true then render shall be called
+ // if shouldComponentUpdate returns false, then render shall not be called
+ // shouldComponentUpdate of PureComponent compare all props to the component wiht 
+ // previous props, compare all state of this component wiht prev state
+ // does shallow comparision means compare two references
+// pure component shall compare both objects props and functions props
+ class CartList extends PureComponent {
     constructor(props) {
         super(props);
     }

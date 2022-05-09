@@ -50,10 +50,13 @@ class Cart extends React.Component {
 
         const items = [...this.state.items, item] // ... spread
         console.log("Before ", this.state)
+
+        const {amount, totalItems} = recalculate(items)
         
         // other properties are retained as is
         this.setState({
-            items // items: items
+            items, // items: items
+            amount, totalItems
         })
 
         console.log("After ", this.state)
@@ -64,8 +67,11 @@ class Cart extends React.Component {
         console.log("Event ", e)
 
         const items = [] 
+        const {amount, totalItems} = recalculate(items)
+
         this.setState ({
-            items
+            items,
+            amount, totalItems
         })
     }
 
@@ -84,8 +90,11 @@ class Cart extends React.Component {
         console.log("removeItem called", id)
         // return all items as new array ref, exclude the one
         const items = this.state.items.filter (item => item.id !== id)
+        const {amount, totalItems} = recalculate(items)
+
         this.setState ({
-            items
+            items,
+            amount, totalItems
         })
     }
 
@@ -94,7 +103,31 @@ class Cart extends React.Component {
         console.log("updateItem called ", id, qty)
         // two level of immutablity, list itself immutable, object item inside list tobe immutable
         const items = this.state.items.map (item => item.id === id ? {...item, qty} : item)
+        const {amount, totalItems} = recalculate(items)
+
+        this.setState({items, amount, totalItems})
+    }
+
+    bulkAdd = () => {
+        const newItems = []
+        for (let i = 0; i < 1000; i++) {
+            const id = Math.ceil (Math.random() * 1000000)
+            const item = {
+                id, // id: id,
+                name: `Product ${id}`,
+                price: Math.ceil(Math.random() * 100),
+                qty: Math.ceil(Math.random() * 10),
+            }
+            newItems.push(item)
+        }
+
+        const items = [...this.state.items, ...newItems]
         this.setState({items})
+    }
+
+    dummy = () => {
+        // trigger render function
+        this.setState ({flag: true})
     }
 
     render() {
@@ -107,6 +140,8 @@ class Cart extends React.Component {
                     <button onClick={this.addItem}>Add Item</button>
                 </div>
                 <button onClick={this.empty}>Empty</button>
+                <button onClick={this.bulkAdd}>Bulk Add</button>
+                <button onClick={this.dummy}>Dummy</button>
 
                 <CartList items={this.state.items} 
                           updateItem = {this.updateItem}
