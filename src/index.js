@@ -1,17 +1,22 @@
+// react is for v.dom creation, app development
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// what patch the real dom, runs the event loop
+import ReactDOM from 'react-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import App from './app/App';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// webpack collect css using extract plugin
+import "./styles.css"
+
+ReactDOM.render (<App />, document.getElementById("root"))
+
+// create v.dom
+// const h1 = React.createElement("h1", {id: 'appheader', },
+//                                  "Welcome to React")
+
+// mount v.dom into real dom
+// ReactDOM.render(h1, document.getElementById("root") )
+
+// inside index.html, react-scripts usign webpack, 
+// it create budnles and add src tag automatically to include this code
+// at runtime
