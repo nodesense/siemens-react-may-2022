@@ -2,6 +2,7 @@
 import React from 'react';
 import CartList from './CartList';
 import CartSummary from './CartSummary';
+import FuncCartSummary from './FuncCartSummary';
 
 
 function  recalculate(items) {
@@ -165,6 +166,10 @@ class Cart extends React.Component {
                           removeItem = {this.removeItem}  
                 >
                 </CartList>
+
+                <FuncCartSummary amount={this.state.amount}
+                             count={this.state.totalItems}>
+                </FuncCartSummary>
 
                 <CartSummary amount={this.state.amount}
                              count={this.state.totalItems}>
