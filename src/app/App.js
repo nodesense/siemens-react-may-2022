@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Cart from './cart/components/Cart';
 import Counter from './components/Counter';
+import Checkout from './cart/components/Checkout';
 
 
 
@@ -33,6 +34,8 @@ class App extends React.Component {
                 {/* pass data  from parent to child usign props */}
                 <Header title="Product app" />
 
+                <Checkout />
+                
                 <Counter />
 
                 <Cart />
