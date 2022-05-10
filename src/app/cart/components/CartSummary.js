@@ -55,6 +55,13 @@ function recalculate(props) {
         
     }
 
+    static getDerivedStateFromProps(props, state) {
+        console.log("CartSummary getDerivedStateFromProps", props, state)
+
+        // return {discount, grandTotal}
+        return recalculate(props) // returned state is merged with this.state by react
+    }
+
     
     render() {
         console.log("CartSummary Render");

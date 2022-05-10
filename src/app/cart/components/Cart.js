@@ -51,12 +51,12 @@ class Cart extends React.Component {
         const items = [...this.state.items, item] // ... spread
         console.log("Before ", this.state)
 
-        const {amount, totalItems} = recalculate(items)
+        //const {amount, totalItems} = recalculate(items)
         
         // other properties are retained as is
         this.setState({
             items, // items: items
-            amount, totalItems
+          //  amount, totalItems
         })
 
         console.log("After ", this.state)
@@ -67,11 +67,11 @@ class Cart extends React.Component {
         console.log("Event ", e)
 
         const items = [] 
-        const {amount, totalItems} = recalculate(items)
+        //const {amount, totalItems} = recalculate(items)
 
         this.setState ({
             items,
-            amount, totalItems
+          //  amount, totalItems
         })
     }
 
@@ -90,11 +90,11 @@ class Cart extends React.Component {
         console.log("removeItem called", id)
         // return all items as new array ref, exclude the one
         const items = this.state.items.filter (item => item.id !== id)
-        const {amount, totalItems} = recalculate(items)
+        //const {amount, totalItems} = recalculate(items)
 
         this.setState ({
             items,
-            amount, totalItems
+         //   amount, totalItems
         })
     }
 
@@ -103,9 +103,11 @@ class Cart extends React.Component {
         console.log("updateItem called ", id, qty)
         // two level of immutablity, list itself immutable, object item inside list tobe immutable
         const items = this.state.items.map (item => item.id === id ? {...item, qty} : item)
-        const {amount, totalItems} = recalculate(items)
+        //const {amount, totalItems} = recalculate(items)
 
-        this.setState({items, amount, totalItems})
+        this.setState({items, 
+        //    amount, totalItems
+        })
     }
 
     bulkAdd = () => {
@@ -129,6 +131,21 @@ class Cart extends React.Component {
         // trigger render function
         this.setState ({flag: true})
     }
+
+    // called before render, on both creation and update cycle
+    // props is from parent, state is from current component
+    // static function, no this or no this.state
+    static getDerivedStateFromProps(props, state) {
+        console.log("CArt getDerivedStateFromProps", state)
+        // where we calculate derived state from other state/props
+        // return new state
+        const {amount, totalItems} = recalculate(state.items)
+        return {
+            amount, 
+            totalItems
+        }
+    }
+
 
     render() {
         console.log("Cart render", this.state)
