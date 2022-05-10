@@ -130,7 +130,7 @@ class Cart extends React.Component {
 
     dummy = () => {
         // trigger render function
-        this.setState ({flag: true})
+        this.setState ({flag: !this.state.flag})
     }
 
     // called before render, on both creation and update cycle
@@ -167,9 +167,11 @@ class Cart extends React.Component {
                 >
                 </CartList>
 
+                { this.state.flag && 
                 <FuncCartSummary amount={this.state.amount}
                              count={this.state.totalItems}>
-                </FuncCartSummary>
+                </FuncCartSummary> 
+                }
 
                 <CartSummary amount={this.state.amount}
                              count={this.state.totalItems}>

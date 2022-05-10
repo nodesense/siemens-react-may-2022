@@ -34,6 +34,11 @@ const FuncCartSummary = (props) => {
     useEffect(() => {
         console.log("useEffect document title")
         document.title = `Grant Total is  ${grandTotal}`;
+
+        // this function is called when component will   unmount
+        return () => {
+            console.log("*useEFfect will unmount like ")
+        }
       });
 
       //useEffect with only componentDidMount like scenario, must be called only once
