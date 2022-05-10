@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ThemeContext from '../contexts/ThemeContext';
+import {withRouter} from 'react-router-dom';
 
 // props is contract between parent and child component
 // add few constraints to validate props
 //   data type check, required check
 
 // destructuring in function parameter
-const Footer = ( { year, title, stores, weekend, children } ) => {
+const Footer = ( { year, title, stores, weekend, children, history, match } ) => {
     console.log("Footer render")
+    console.log("Footer render route ", match, history)
     // create and return virtual dom
     return (
         <div>
@@ -53,4 +55,6 @@ Footer.defaultProps = {
     stores : []
 }
 
-export default Footer;
+// create higher order component that wrap footer comp
+// React router shall pass history, match params to props
+export default withRouter(Footer);

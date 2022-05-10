@@ -27,8 +27,16 @@ export class Checkout extends Component {
         })
     }
 
+    gotoCart = () => {
+        this.props.history.push("/cart")
+    }
+
     componentDidMount() {
-         
+        // routeded params like match, match.params.coupon
+        // history for navigation
+        console.log ("Checkout render ", this.props)
+        const coupon = this.props.match.params.coupon
+        console.log("Coupon", coupon)
         this.firstNameRef.current.focus()
         this.firstNameRef.current.select()
     }
@@ -53,6 +61,8 @@ export class Checkout extends Component {
                  <option value='Pune'>Pune</option>
              </select>
           </form>
+
+          <button onClick={this.gotoCart}>Cart</button>
       </div>
     )
   }
