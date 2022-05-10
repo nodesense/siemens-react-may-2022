@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ThemeContext from '../contexts/ThemeContext';
 
 // props is contract between parent and child component
 // add few constraints to validate props
@@ -25,6 +26,15 @@ const Footer = ( { year, title, stores, weekend, children } ) => {
 
             {/* children coming from parent content area */}
             {children}
+
+            <ThemeContext.Consumer>
+                { value => (
+                    <div style= { {background: value} }>
+                        I am lovely {value} color
+                    </div>
+                )}
+            </ThemeContext.Consumer>
+
         </div>
     )
 }

@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Cart from './cart/components/Cart';
 import Counter from './components/Counter';
 import Checkout from './cart/components/Checkout';
+import ThemeContext from './contexts/ThemeContext';
 
 
 
@@ -15,6 +16,21 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         console.log('App created')
+        this.state = {
+            theme: 'pink'
+        }
+    }
+
+    pinkTheme = () => {
+        this.setState({theme: 'pink'})
+    }
+    
+    greenTheme = () => {
+        this.setState({theme: 'lightgreen'})
+    }
+
+    blueTheme = () => {
+        this.setState({theme: 'lightblue'})
     }
 
     // keyword
@@ -29,13 +45,18 @@ class App extends React.Component {
         console.log("App render")
         return (
             <div>
+                <button onClick={this.blueTheme}>Blue</button>
+                <button onClick={this.greenTheme}>Green</button>
+                <button onClick={this.pinkTheme}>Pink</button>
+                {/* any ThemeConsumer inside provide will receive pink value */}
+                <ThemeContext.Provider value={this.state.theme}>
                 {/* comment in jsx */}
                 {/* app is parent, header and footer are children */}
                 {/* pass data  from parent to child usign props */}
                 <Header title="Product app" />
 
                 <Checkout />
-                
+
                 <Counter />
 
                 <Cart />
@@ -52,6 +73,7 @@ class App extends React.Component {
                     */}
                     <p>Customer care: +91 911111111</p>
                 </Footer>
+                </ThemeContext.Provider>
             </div>
         )
     }
