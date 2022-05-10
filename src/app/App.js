@@ -14,6 +14,7 @@ import {BrowserRouter as Router,
         Redirect,
         Switch    
 } from 'react-router-dom';
+import ProductList from './product/components/ProductList';
 
 
 
@@ -63,11 +64,16 @@ class App extends React.Component {
 
                 {/* Switch picks first match instead of rendering all matches */}
                 <Switch>
+
+                 <Route path="/products">
+                        <ProductList />
+                 </Route>   
+
                 <Route path="/cart">
                     <Cart />
                 </Route>    
                 <Route path="/checkout/:coupon" 
-                        render = { (props) => <Checkout {...props} /> } >
+                        render = { (props) => <Checkout {...props}  /> } >
                         
                 </Route>        
                 <Route path="/counter">
