@@ -27,7 +27,7 @@ const INITIAL_STATE = {
     // very begining state shall be undefined, safe to intitialize default state
 // second arg is action from dispatch(action)
 
-export const cartReducer = (state = INITIAL_STATE, action) => {
+export const cartReducer = (state=INITIAL_STATE, action) => {
     console.log("cartReducer", state, action)
     switch (action.type) {
         case ActionTypes.ADD_ITEM_TO_CART: {
