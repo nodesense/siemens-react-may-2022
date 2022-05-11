@@ -8,6 +8,8 @@ import App from './app/App';
 // webpack collect css using extract plugin
 import "./styles.css"
 
+import './app/redux-demo'; // removed later
+
 ReactDOM.render (<App />, document.getElementById("root"))
 
 // create v.dom
