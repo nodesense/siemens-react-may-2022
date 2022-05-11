@@ -1,6 +1,7 @@
 //ReduxCart.js
 // rafce
 import React from 'react'
+import ReduxCartList from '../containers/ReduxCartList'
 
 // no redux here
 
@@ -13,6 +14,8 @@ const ReduxCart = (props) => {
         <span>Amount {amount}</span>
         <button onClick={addItem}>Add Item</button>  
         <button onClick={emptyCart}>Empty</button>
+
+        <ReduxCartList></ReduxCartList>
     </div>
   )
 }
