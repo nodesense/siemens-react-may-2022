@@ -1,5 +1,12 @@
 import { addItemToCart } from "./redux-cart/state/actions/cart.actions";
 import store from "./state/store";
+import {bindActionCreators} from 'redux';
+import * as actions from './redux-cart/state/actions/cart.actions';
+
+
+//bindActionCreators is helper function, it automatically calls action function
+//   and get the action and dispatch the action at one shot
+// it can be used with 1 function or object of functions too
 
 console.log("redux learning")
 
@@ -42,3 +49,32 @@ state = store.getState()
 console.log("Updated state is ", state)
 
 // DIY: removeItemFromCart(1), updateItemInCart(2, 5), emptyCart()
+// passing action and dispatch function references
+// bindActioncreators create a wrapper function, that will call addItemToCart and get action
+// and also dispatch
+const addItem = bindActionCreators(addItemToCart, store.dispatch)
+// these parameters automatically passed to addItemToCart in same order
+addItem(3, 'Phone 3', 7000) // will dispatch action
+
+state = store.getState()
+
+console.log("Updated state is ", state)
+
+//we can also create action creators for group of actions 
+// actions is object import * as actions
+// actions has 4 functions, now all the functiosn are wrapped and returned with new object
+// with 4 functions, 
+const bindActions = bindActionCreators(actions, store.dispatch)
+
+// dispatch removeItemFromCart
+bindActions.removeItemFromCart(1) // this dispatch action
+
+state = store.getState()
+
+console.log("Updated state is ", state)
+
+bindActions.emptyCart() // this dispatch action
+
+state = store.getState()
+
+console.log("Updated state is ", state)
