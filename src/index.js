@@ -9,8 +9,15 @@ import App from './app/App';
 import "./styles.css"
 
 import './app/redux-demo'; // removed later
+import store from './app/state/store';
+import { Provider } from 'react-redux';
 
-ReactDOM.render (<App />, document.getElementById("root"))
+ //Provider expose store as context for container component
+
+ReactDOM.render (<Provider store={store}>
+                    <App />
+                </Provider>
+                    , document.getElementById("root"))
 
 // create v.dom
 // const h1 = React.createElement("h1", {id: 'appheader', },

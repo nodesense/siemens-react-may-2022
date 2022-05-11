@@ -16,6 +16,10 @@ import {BrowserRouter as Router,
 } from 'react-router-dom';
 import ProductList from './product/components/ProductList';
 
+// default import can be alias name, means can be anything
+// importing ReduxCartContainer, ReduxCart are all same
+import ReduxCart from './redux-cart/containers/ReduxCart';
+
 
 
 class App extends React.Component {
@@ -68,6 +72,10 @@ class App extends React.Component {
                  <Route path="/products">
                         <ProductList />
                  </Route>   
+
+                 <Route path="/redux-cart">
+                     <ReduxCart />
+                 </Route>
 
                 <Route path="/cart">
                     <Cart />
