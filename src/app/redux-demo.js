@@ -31,7 +31,9 @@ console.log("Action is ", action, typeof(action))
 
 console.log("Dispatching action ", action)
 // calls reducer
-// sync call, calls middleware if there, then calls reducers, then susbcribe func
+// sync call, calls middleware if there, 
+//then calls reducers,
+// then susbcribe func
 store.dispatch(action)
 console.log("Dispatched action")
 
@@ -78,3 +80,14 @@ bindActions.emptyCart() // this dispatch action
 state = store.getState()
 
 console.log("Updated state is ", state)
+
+
+//get product returns object
+const actionFunc = actions.getProducts()
+console.log("thnk func type", typeof (actionFunc))
+console.log("Thunk func we dispatch now is ", actionFunc)
+// this dispatchedfunction should not go to reducer, else reducer shall crash
+// this dispatched function is intercepted by thunk middleware 
+// this dispatched function called by thunk middleware
+// thunk middlware will not forward function to reducer
+store.dispatch(actionFunc)

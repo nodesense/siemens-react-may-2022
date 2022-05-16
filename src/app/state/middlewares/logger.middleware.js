@@ -13,7 +13,6 @@ export function logger(store) {
     return function(next) {
         // called once, websocket, timer
         // next is fucntion, that forward action to next middleware/reducer
-        // using next we can dispatch action
         return function(action) {
             // called for every dispatch    
             console.log("LOGGER Middleware calling next ", action)
