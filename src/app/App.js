@@ -1,11 +1,13 @@
 // class component
 // React is defualt export from react module
 // for default export, we don't use curly brace
-import React from 'react';
+import React, {Suspense } from 'react';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Cart from './cart/components/Cart';
+
+//import Cart from './cart/components/Cart';
+
 import Counter from './components/Counter';
 import Checkout from './cart/components/Checkout';
 import ThemeContext from './contexts/ThemeContext';
@@ -21,7 +23,10 @@ import ProductList from './product/components/ProductList';
 import ReduxCart from './redux-cart/containers/ReduxCart';
 import ReduxProductList from './redux-cart/containers/ReduxProductList';
 
-
+// code splitting, Cart component, code and its import shall be bundled together
+//  and bundled code shall be downloaed when we go to cart page
+const Cart = React.lazy( () => import('./cart/components/Cart'))
+ 
 
 class App extends React.Component {
     constructor(props) {
@@ -83,8 +88,11 @@ class App extends React.Component {
                  </Route>
 
                 <Route path="/cart">
-                    <Cart />
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Cart />
+                    </Suspense>
                 </Route>    
+                
                 <Route path="/checkout/:coupon" 
                         render = { (props) => <Checkout {...props}  /> } >
                         
