@@ -19,6 +19,7 @@ import ProductList from './product/components/ProductList';
 // default import can be alias name, means can be anything
 // importing ReduxCartContainer, ReduxCart are all same
 import ReduxCart from './redux-cart/containers/ReduxCart';
+import ReduxProductList from './redux-cart/containers/ReduxProductList';
 
 
 
@@ -72,6 +73,10 @@ class App extends React.Component {
                  <Route path="/products">
                         <ProductList />
                  </Route>   
+
+                <Route path="/redux-products">
+                      <ReduxProductList />
+                </Route>
 
                  <Route path="/redux-cart">
                      <ReduxCart />

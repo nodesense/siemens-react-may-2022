@@ -1,6 +1,7 @@
 // action creators
 // create and return action objects
 import * as ActionTypes from '../action-types';
+import { fetchProducts } from '../services/product.services';
 
 // es5
 export function removeItemFromCart(id) {
@@ -27,6 +28,15 @@ export const addItemToCart = (id, name, price) => ({
 export const emptyCart = () => ({type: ActionTypes.EMPTY_CART})
 
 //product/state/actions/product.actions.js
+export const initLoading = (state) => ({
+                                        type: ActionTypes.INIT_LOADING, 
+                                        payload: {loading: state}}) 
+
+export const initProducts = (products) => ({
+                                        type: ActionTypes.INIT_PRODUCTS, 
+                                        payload: {products}
+                                    })                                       
+
 // redux thunk/async functions
 // get data from backend
 // redux-thunk, we return a function instaed of object from action creator
@@ -38,10 +48,17 @@ export function getProducts() {
     // if action dispatched is function, ie current scenario
     // the function is called by redux-middleware
     // the function is not forwarded further
-    return function (dispatch, getState) {
+    return async function (dispatch, getState) {
         console.log("action function called")
         // we write async code like API call
         // use service api (optional) or axios directly here to get data from backend
         // dispatch the data to reducer/store as action object
+
+        dispatch(initLoading(true)) // set the loading icon     
+        const products = await fetchProducts()
+        // we have to initialize products to store/reducer
+        console.log("Products fetched via thunk  ", products)
+        dispatch(initLoading(false)) // set the loading icon off
+        dispatch(initProducts(products)) // dispatch products to reducer
     }
 }

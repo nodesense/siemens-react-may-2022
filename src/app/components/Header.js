@@ -23,6 +23,11 @@ function Header(props) {
             </NavLink>
 
 
+            <NavLink className="button" to="/redux-products" activeClassName='success'>
+                Redux Products
+            </NavLink>
+
+
             <NavLink className="button" to="/redux-cart" activeClassName='success'>
                 Redux Cart
             </NavLink>

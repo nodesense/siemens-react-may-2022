@@ -90,4 +90,4 @@ console.log("Thunk func we dispatch now is ", actionFunc)
 // this dispatched function is intercepted by thunk middleware 
 // this dispatched function called by thunk middleware
 // thunk middlware will not forward function to reducer
-store.dispatch(actionFunc)
+// store.dispatch(actionFunc)
