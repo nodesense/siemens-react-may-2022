@@ -17,6 +17,9 @@ import {BrowserRouter as Router,
         Switch    
 } from 'react-router-dom';
 import ProductList from './product/components/ProductList';
+import FuncProductList from './product/components/FuncProductList';
+
+
 
 // default import can be alias name, means can be anything
 // importing ReduxCartContainer, ReduxCart are all same
@@ -79,6 +82,10 @@ class App extends React.Component {
                         <ProductList />
                  </Route>   
 
+                 <Route path="/func-products">
+                        <FuncProductList />
+                 </Route>  
+ 
                 <Route path="/redux-products">
                       <ReduxProductList />
                 </Route>

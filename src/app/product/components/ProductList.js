@@ -13,7 +13,7 @@ export class ProductList extends Component {
 
     componentDidMount() {
         // async
-        axios.get("http://localhost:7070/api/products")
+        axios.get("http://localhost:7070/delayed/api/products")
              .then (response  => {
                     console.log("Products data ", response.data)
                     this.setState({
