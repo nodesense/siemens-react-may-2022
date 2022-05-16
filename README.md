@@ -7,6 +7,22 @@ npm install
 npm start
 ```
 
+
+# Working with enviornment
+
+React build tool [create-react-app] uses dotenv
+
+dotenv is for node.js backend 
+
+while mentioning .env file, react has few built in properties
+
+any app specific configuration, like end point must be prefixed REACT_APP
+
+REACT_APP_END_POINT=http://localhost:7070
+
+
+while using this code, we should use process.env.REACT_APP_END_POINT
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
