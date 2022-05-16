@@ -2,6 +2,7 @@
 import React from 'react';
 // what patch the real dom, runs the event loop
 import ReactDOM from 'react-dom';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 import App from './app/App';
 
@@ -29,3 +30,5 @@ ReactDOM.render (<Provider store={store}>
 // inside index.html, react-scripts usign webpack, 
 // it create budnles and add src tag automatically to include this code
 // at runtime
+
+serviceWorkerRegistration.register()

@@ -7,6 +7,22 @@ npm install
 npm start
 ```
 
+#PWA
+
+```
+npm run build
+```
+
+output files are located in build director
+
+```
+npm install http-server -g
+```
+
+```
+cd build
+http-server -c-1 -p 8888 .
+```
 
 # Working with enviornment
 
